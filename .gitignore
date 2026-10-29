@@ -1,0 +1,18 @@
+node_modules/
+dist/
+.env
+.env.*
+*.local
+
+# Build artefacts
+ble_compile/built/
+coverage/
+dist-deploy.zip
+build*.log
+build*.txt
+build*.output
+tmp/
+v82-proof/
+
+.DS_Store
+.claude/worktrees/

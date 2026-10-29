@@ -1,0 +1,260 @@
+/* ByteBuddies Blockly-Style Blocks v2 */
+:root {
+  --bb-block-base: #f59e0b;
+  --bb-block-hi: #f59e0b;
+  --bb-block-shadow: #d97706;
+}
+
+div.block,
+div.palette-block,
+.workspace-block {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  min-height: 36px !important;
+  height: 36px !important;
+  padding: 7px 12px !important;
+  margin: 6px 0 !important;
+  border-radius: 6px !important;
+  border: 1px solid rgba(0, 0, 0, 0.18) !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  color: #fff !important;
+  user-select: none !important;
+  cursor: grab !important;
+  transition: transform 0.08s ease !important;
+  background: var(--bb-block-base) !important;
+  box-shadow: none !important;
+}
+
+div.palette-block {
+  width: 100% !important;
+  margin: 4px 0 !important;
+}
+
+/* Top notch (socket) */
+body div.block::before,
+body div.palette-block::before,
+body .workspace-block::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 14px !important;
+  width: 18px !important;
+  height: 5px !important;
+  border-radius: 0 0 4px 4px !important;
+  background: #111122 !important;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.24) !important;
+}
+
+/* Bottom tab (male connector) */
+body div.block::after,
+body div.palette-block::after,
+body .workspace-block::after {
+  content: "" !important;
+  position: absolute !important;
+  bottom: -5px !important;
+  left: 14px !important;
+  width: 18px !important;
+  height: 5px !important;
+  border-radius: 0 0 4px 4px !important;
+  background: var(--bb-block-base) !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.18) !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.18) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18) !important;
+}
+
+/* Match notch cutout to each panel background */
+.block-canvas .workspace-block::before {
+  background: var(--bg-primary) !important;
+}
+
+div.palette-block::before {
+  background: var(--bg-secondary) !important;
+}
+
+/* Event hat blocks (no top notch) */
+div.block[data-hat="true"],
+div.palette-block[data-hat="true"],
+.workspace-block[data-hat="true"] {
+  border-radius: 14px 14px 6px 6px !important;
+  padding-top: 9px !important;
+}
+
+div.block[data-hat="true"]::before,
+div.palette-block[data-hat="true"]::before,
+.workspace-block[data-hat="true"]::before {
+  display: none !important;
+}
+
+div.block:hover,
+div.palette-block:hover,
+.workspace-block:hover {
+  transform: translateY(0) !important;
+}
+
+div.block.active,
+div.block.dragging,
+.workspace-block.active,
+.workspace-block.dragging {
+  transform: scale(1.02) !important;
+}
+
+div.block input,
+div.block select,
+div.palette-block input,
+.palette-block select,
+.workspace-block input,
+.workspace-block select {
+  background: #ffffff !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  color: #334155 !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  padding: 1px 8px !important;
+  min-height: 22px !important;
+}
+
+[data-category="event"],
+[data-category="events"] {
+  --bb-block-base: #f59e0b;
+  --bb-block-hi: #fbbf24;
+  --bb-block-shadow: #d97706;
+}
+
+[data-category="motion"],
+[data-category="sprite"] {
+  --bb-block-base: #3b82f6;
+  --bb-block-hi: #60a5fa;
+  --bb-block-shadow: #2563eb;
+}
+
+[data-category="looks"] {
+  --bb-block-base: #8b5cf6;
+  --bb-block-hi: #a78bfa;
+  --bb-block-shadow: #6d28d9;
+}
+
+[data-category="control"],
+[data-category="loop"] {
+  --bb-block-base: #f97316;
+  --bb-block-hi: #fb923c;
+  --bb-block-shadow: #ea580c;
+}
+
+[data-category="sensing"] {
+  --bb-block-base: #14b8a6;
+  --bb-block-hi: #2dd4bf;
+  --bb-block-shadow: #0f766e;
+}
+
+[data-category="sound"] {
+  --bb-block-base: #d946ef;
+  --bb-block-hi: #e879f9;
+  --bb-block-shadow: #a21caf;
+}
+
+[data-category="variable"],
+[data-category="variables"] {
+  --bb-block-base: #f59e0b;
+  --bb-block-hi: #fbbf24;
+  --bb-block-shadow: #d97706;
+}
+
+[data-category="math"],
+[data-category="operators"] {
+  --bb-block-base: #22c55e;
+  --bb-block-hi: #4ade80;
+  --bb-block-shadow: #15803d;
+}
+
+[data-category="logic"] {
+  --bb-block-base: #0ea5e9;
+  --bb-block-hi: #38bdf8;
+  --bb-block-shadow: #0284c7;
+}
+
+[data-category="function"],
+[data-category="functions"],
+[data-category="myblocks"] {
+  --bb-block-base: #6366f1;
+  --bb-block-hi: #818cf8;
+  --bb-block-shadow: #4338ca;
+}
+
+[data-category="text"],
+[data-category="list"] {
+  --bb-block-base: #06b6d4;
+  --bb-block-hi: #22d3ee;
+  --bb-block-shadow: #0e7490;
+}
+
+[data-category="action"],
+[data-category="ai"] {
+  --bb-block-base: #ec4899;
+  --bb-block-hi: #f472b6;
+  --bb-block-shadow: #be185d;
+}
+
+[data-category="physics"] {
+  --bb-block-base: #14b8a6;
+  --bb-block-hi: #2dd4bf;
+  --bb-block-shadow: #0f766e;
+}
+
+[data-category="game"] {
+  --bb-block-base: #10b981;
+  --bb-block-hi: #34d399;
+  --bb-block-shadow: #047857;
+}
+
+[data-category="Movement"] {
+  --bb-block-base: #3b82f6;
+  --bb-block-hi: #60a5fa;
+  --bb-block-shadow: #2563eb;
+}
+
+[data-category="Sensors"] {
+  --bb-block-base: #14b8a6;
+  --bb-block-hi: #2dd4bf;
+  --bb-block-shadow: #0f766e;
+}
+
+[data-category="Control"] {
+  --bb-block-base: #f97316;
+  --bb-block-hi: #fb923c;
+  --bb-block-shadow: #ea580c;
+}
+
+[data-category="Math"] {
+  --bb-block-base: #22c55e;
+  --bb-block-hi: #4ade80;
+  --bb-block-shadow: #15803d;
+}
+
+[data-category="Outputs"],
+[data-category="Lights"] {
+  --bb-block-base: #d946ef;
+  --bb-block-hi: #e879f9;
+  --bb-block-shadow: #a21caf;
+}
+
+[data-category="Servo"] {
+  --bb-block-base: #8b5cf6;
+  --bb-block-hi: #a78bfa;
+  --bb-block-shadow: #6d28d9;
+}
+
+[data-category="Variables"] {
+  --bb-block-base: #f59e0b;
+  --bb-block-hi: #fbbf24;
+  --bb-block-shadow: #d97706;
+}
+
+[data-category="Comms"] {
+  --bb-block-base: #ec4899;
+  --bb-block-hi: #f472b6;
+  --bb-block-shadow: #be185d;
+}

@@ -1,0 +1,216 @@
+/**
+ * Center 3D build studio — hero robot, platform, sockets, studio lighting.
+ */
+import React, { Suspense, useRef, useState } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Environment, ContactShadows } from '@react-three/drei';
+import StudioOrbitControls from './StudioOrbitControls.jsx';
+import { EffectComposer, Bloom } from '@react-three/postprocessing';
+import * as THREE from 'three';
+import HeroRobotModel from '../HeroRobotModel.jsx';
+import AssemblyAttachmentMeshes from '../AssemblyAttachmentMeshes.jsx';
+import SnapSocketMarkers from '../SnapSocketMarkers.jsx';
+import { migrateDesign } from '../../config.js';
+import { migrateAssembly } from '../../services/assembly-service.js';
+import { getVisibleSockets } from '../../utils/build-slots.js';
+import { VIEWPORT } from '../../constants/sizes.js';
+import SnapParticles from '../common/SnapParticles.jsx';
+import { useUiStore } from '../../store/uiStore.js';
+import { EmojiIcon } from '../../../components/ui/Icon.jsx';
+
+/** Studio 3-point + rim lighting for hero robot */
+function HeroLighting() {
+  return (
+    <>
+      <ambientLight intensity={0.85} color="#ffffff" />
+      <hemisphereLight intensity={0.7} color="#ffffff" groundColor="#c5d0e0" />
+      <directionalLight
+        position={[4, 8, 6]}
+        intensity={1.65}
+        castShadow
+        shadow-mapSize={[2048, 2048]}
+        shadow-bias={-0.0001}
+        color="#fffef8"
+      />
+      <directionalLight position={[-6, 5, -2]} intensity={0.55} color="#b8dcff" />
+      <directionalLight position={[0, 2, -6]} intensity={0.35} color="#e8f4ff" />
+      <spotLight
+        position={[0, 5, 3]}
+        angle={0.45}
+        penumbra={0.6}
+        intensity={0.9}
+        color="#ffffff"
+        castShadow
+      />
+      <pointLight position={[0, 1.2, 2.5]} intensity={0.65} color="#00D9FF" distance={8} decay={2} />
+      <pointLight position={[2.5, 0.8, 0]} intensity={0.3} color="#FF8C00" distance={6} decay={2} />
+    </>
+  );
+}
+
+function StudioPlatform() {
+  return null;
+}
+
+function SceneContent({
+  design,
+  highlightSlot,
+  snapPulse,
+  dragCategory,
+  onSocketSelect,
+  onSocketRemove,
+}) {
+  const d = migrateDesign(design);
+  const asm = migrateAssembly(d);
+  const visibleSockets = getVisibleSockets(asm, asm.base?.shape === 'arm', { freeBuild: true });
+  const placedCount = Object.values(asm.slots || {}).filter(Boolean).length;
+
+  return (
+    <>
+      <HeroLighting />
+
+      <StudioPlatform snapPulse={snapPulse} />
+      <ContactShadows position={[0, -0.55, 0]} opacity={0.5} scale={12} blur={3.2} far={8} color="#1a2a40" />
+
+      <HeroRobotModel
+        key={`robot-${placedCount}-${asm.base?.chassisType}-${asm.base?.color}-${asm.slots?.movement?.partId}`}
+        design={d}
+        productVisual
+      />
+      <AssemblyAttachmentMeshes design={d} />
+      <SnapSocketMarkers
+        base={asm.base}
+        slots={asm.slots}
+        highlightSlot={highlightSlot}
+        snapPulse={snapPulse}
+        dragCategory={dragCategory}
+        productMode
+        visibleSlots={visibleSockets}
+        onSocketSelect={onSocketSelect}
+        onSocketRemove={onSocketRemove}
+      />
+    </>
+  );
+}
+
+export default function ProductViewport({
+  design,
+  highlightSlot,
+  snapPulse,
+  dragOver,
+  onSocketSelect,
+  onSocketRemove,
+  onDragOver,
+  onDragLeave,
+  onDrop,
+  controlsRef,
+  onRotateLeft,
+  onRotateRight,
+  onZoomIn,
+  onZoomOut,
+  onPaint,
+  onClear,
+  onUndo,
+  onCode,
+  onTest,
+  canUndo,
+  robotName,
+  editingName,
+  onEditName,
+  onNameChange,
+  onNameSave,
+  statusText,
+}) {
+  const cameraApiRef = useRef();
+  const apiRef = controlsRef || cameraApiRef;
+  const snapBurst = useUiStore((s) => s.snapBurst);
+  const dragOverStore = useUiStore((s) => s.dragOverViewport);
+  const draggingPart = useUiStore((s) => s.draggingPart);
+  const showDrag = dragOver || dragOverStore;
+
+  const rotateLeft = () => apiRef.current?.rotateLeft?.(Math.PI / 8);
+  const rotateRight = () => apiRef.current?.rotateRight?.(Math.PI / 8);
+  const zoomIn = () => apiRef.current?.zoomIn?.(1.12);
+  const zoomOut = () => apiRef.current?.zoomOut?.(1.12);
+
+  return (
+    <div
+      className={`rd-viewport ${showDrag ? 'rd-viewport--drag-over' : ''}`}
+      onDragOver={onDragOver}
+      onDragLeave={onDragLeave}
+      onDrop={onDrop}
+    >
+      <header className="rd-viewport-head">
+        <div className="rd-viewport-title">
+          <span className="rd-viewport-tag">3D BUILD STUDIO</span>
+          {editingName ? (
+            <input
+              className="rd-robot-name-input"
+              value={robotName}
+              onChange={(e) => onNameChange?.(e.target.value)}
+              onBlur={onNameSave}
+              onKeyDown={(e) => e.key === 'Enter' && onNameSave?.()}
+              autoFocus
+            />
+          ) : (
+            <button type="button" className="rd-robot-name" onClick={onEditName}>
+              {robotName || 'Explorer Bot'} <span aria-hidden>✎</span>
+            </button>
+          )}
+        </div>
+        <p className="rd-viewport-hint">{statusText}</p>
+      </header>
+
+      <div className={`rd-viewport-canvas-wrap ${snapPulse ? 'rd-viewport-canvas-wrap--snap' : ''}`}>
+        <Canvas
+          shadows
+          dpr={[1, 2]}
+          camera={{ position: VIEWPORT.cameraPos, fov: VIEWPORT.cameraFov, near: 0.1, far: 100 }}
+          gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.85 }}
+        >
+          <color attach="background" args={['#e4e8ee']} />
+          <fog attach="fog" args={['#e4e8ee', 14, 32]} />
+          <Environment preset="studio" />
+          <Suspense fallback={null}>
+            <SceneContent
+              design={design}
+              highlightSlot={highlightSlot}
+              snapPulse={snapPulse}
+              dragCategory={draggingPart?.category}
+              onSocketSelect={onSocketSelect}
+              onSocketRemove={onSocketRemove}
+            />
+            <StudioOrbitControls
+              apiRef={apiRef}
+              minDistance={VIEWPORT.orbitMin}
+              maxDistance={VIEWPORT.orbitMax}
+              target={[0, 0.42, 0]}
+            />
+            <EffectComposer multisampling={0}>
+              <Bloom luminanceThreshold={0.65} luminanceSmoothing={0.85} intensity={0.48} mipmapBlur />
+            </EffectComposer>
+          </Suspense>
+        </Canvas>
+        {showDrag && <div className="rd-drop-hint" aria-hidden>Drop part on robot</div>}
+        {(snapPulse || snapBurst) && <div className="rd-snap-burst" aria-hidden />}
+        <SnapParticles active={snapPulse || snapBurst} />
+      </div>
+
+      <footer className="rd-viewport-foot">
+        <div className="rd-viewport-tools">
+          <button type="button" className="rd-tool-btn" onClick={onRotateLeft || rotateLeft}>↶ Rotate</button>
+          <button type="button" className="rd-tool-btn" onClick={onRotateRight || rotateRight}>Rotate ↷</button>
+          <button type="button" className="rd-tool-btn" onClick={onZoomIn || zoomIn}>+ Zoom</button>
+          <button type="button" className="rd-tool-btn" onClick={onZoomOut || zoomOut}>− Zoom</button>
+          <button type="button" className="rd-tool-btn rd-tool-btn--paint" onClick={onPaint}><EmojiIcon e="🎨" style={{ marginRight: '0.35em' }} />Paint</button>
+        </div>
+        <div className="rd-viewport-actions">
+          <button type="button" className="rd-act-btn rd-act-btn--muted" onClick={onClear}>✕ Clear</button>
+          <button type="button" className="rd-act-btn rd-act-btn--muted" onClick={onUndo} disabled={!canUndo}>↶ Undo</button>
+          <button type="button" className="rd-act-btn rd-act-btn--code" onClick={onCode}>→ Code</button>
+          <button type="button" className="rd-act-btn rd-act-btn--test" onClick={onTest}>✓ Test</button>
+        </div>
+      </footer>
+    </div>
+  );
+}
