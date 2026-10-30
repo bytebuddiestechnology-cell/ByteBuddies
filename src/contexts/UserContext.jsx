@@ -8,6 +8,15 @@ function lsSet(key, value) {
   try { localStorage.setItem(key, value); } catch { /* managed Chrome / guest profile */ }
 }
 
+function getCurrentWeekKey(date = new Date()) {
+  const monday = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  const day = monday.getDay() || 7;
+  monday.setDate(monday.getDate() - day + 1);
+  const month = String(monday.getMonth() + 1).padStart(2, '0');
+  const dateOfMonth = String(monday.getDate()).padStart(2, '0');
+  return `${monday.getFullYear()}-${month}-${dateOfMonth}`;
+}
+
 const UserContext = createContext();
 
 const defaultUser = {
@@ -27,6 +36,7 @@ const defaultUser = {
   ageMode: 'standard',          // 'standard' | 'starter'
   quizScores: {},               // { 'courseId-moduleIndex': score% }
   weeklyXP: [0, 0, 0, 0, 0, 0, 0],
+  weeklyXPWeek: getCurrentWeekKey(),
   timeSpent: 0,                 // cumulative minutes
   streakProtected: false,
   lastActiveDate: null,
@@ -41,7 +51,17 @@ const defaultUser = {
 function loadUser() {
   try {
     const saved = lsGet('cv-user');
-    if (saved) return { ...defaultUser, ...JSON.parse(saved) };
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      const currentWeek = getCurrentWeekKey();
+      const sameWeek = parsed.weeklyXPWeek === currentWeek;
+      return {
+        ...defaultUser,
+        ...parsed,
+        weeklyXP: sameWeek ? (parsed.weeklyXP || defaultUser.weeklyXP) : [0, 0, 0, 0, 0, 0, 0],
+        weeklyXPWeek: currentWeek,
+      };
+    }
   } catch {}
   return defaultUser;
 }
@@ -156,8 +176,12 @@ export function UserProvider({ children }) {
         didLevelUp = true;
       }
       // Update weeklyXP for today
-      const todayIdx = new Date().getDay();
-      const weeklyXP = [...(prev.weeklyXP || [0,0,0,0,0,0,0])];
+      const now = new Date();
+      const todayIdx = now.getDay();
+      const currentWeek = getCurrentWeekKey(now);
+      const weeklyXP = prev.weeklyXPWeek === currentWeek
+        ? [...(prev.weeklyXP || [0,0,0,0,0,0,0])]
+        : [0, 0, 0, 0, 0, 0, 0];
       weeklyXP[todayIdx] = (weeklyXP[todayIdx] || 0) + amount;
       // Unlock themes at milestones
       const totalXP = (prev.level - 1) * prev.xpToNext + prev.xp + amount;
@@ -172,6 +196,7 @@ export function UserProvider({ children }) {
         xpToNext: newXpToNext,
         leveledUp: didLevelUp || prev.leveledUp,
         weeklyXP,
+        weeklyXPWeek: currentWeek,
         unlockedThemes,
       };
     });
