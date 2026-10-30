@@ -287,12 +287,12 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
         </div>
 
         <h1 style={{ fontSize: 'clamp(32px, 7vw, 76px)', fontWeight: 900, lineHeight: 1.08, marginBottom: 24, maxWidth: 860, letterSpacing: '-1.5px' }}>
-          Your child spends 7 hours a day on screens.<br />
-          <span style={gradText}>Make every minute count.</span>
+          From screen time to<br />
+          <span style={gradText}>something they built.</span>
         </h1>
 
         <p style={{ fontSize: 'clamp(15px, 2.5vw, 19px)', color: '#94a3b8', maxWidth: 580, lineHeight: 1.75, marginBottom: 12 }}>
-          ByteBuddies turns screen time into building time. Kids aged 7–16 go from passive scrollers to confident creators — building real games, apps, and AI projects in weeks, not years.
+          ByteBuddies turns screen time into building time. Pupils learn by creating real games and apps, then progress from visual blocks toward text-based code.
         </p>
         <p style={{ fontSize: 14, color: '#6366f1', fontWeight: 600, marginBottom: 32, letterSpacing: 0.3 }}>
           Built for British curriculum schools worldwide · KS2 Computing, Years 3–6
@@ -312,7 +312,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
 
         <div style={{ display: 'flex', gap: 'clamp(12px,3vw,28px)', flexWrap: 'wrap', justifyContent: 'center' }}>
           {['Free school pilot', 'No robot kits needed', 'Runs in any browser'].map(t => (
-            <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 13, color: '#475569' }}>
+            <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 13, color: '#94a3b8' }}>
               <span style={{ color: '#22c55e', fontSize: 15 }}>✓</span>{t}
             </div>
           ))}
@@ -344,7 +344,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
           <h2 style={{ fontSize: 'clamp(22px, 4vw, 44px)', fontWeight: 900, marginBottom: 12, letterSpacing: '-0.5px' }}>
             A 2½-minute tour of ByteBuddies
           </h2>
-          <p style={{ color: '#64748b', fontSize: 'clamp(13px,2vw,16px)', lineHeight: 1.7, maxWidth: 620, margin: '0 auto 28px' }}>
+          <p style={{ color: '#94a3b8', fontSize: 'clamp(13px,2vw,16px)', lineHeight: 1.7, maxWidth: 620, margin: '0 auto 28px' }}>
             See everything pupils, teachers and parents get: KS2 lessons, story missions, Game Builder, 3D Robot Studio, Robot Lab, Classroom, Google Classroom, the staff planner and the parent view, with a full voiceover.
           </p>
           <div style={{ borderRadius: 20, overflow: 'hidden', border: '1px solid rgba(99,102,241,0.35)', boxShadow: '0 20px 80px rgba(99,102,241,0.25)', background: '#000', aspectRatio: '16 / 9' }}>
@@ -365,7 +365,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
           {[['152', 'KS2 lessons'], ['Years 3–6', 'Ready to teach'], ['18', '3D robots to code'], ['37', 'Game worlds'], ['Blocks → Python', 'One platform']].map(([n, l]) => (
             <div key={l} style={{ textAlign: 'center', padding: '4px 8px' }}>
               <div style={{ fontWeight: 900, fontSize: 'clamp(18px,3vw,22px)', ...gradText }}>{n}</div>
-              <div style={{ fontSize: 12, color: '#475569', letterSpacing: 0.5 }}>{l}</div>
+              <div style={{ fontSize: 12, color: '#94a3b8', letterSpacing: 0.5 }}>{l}</div>
             </div>
           ))}
         </div>
@@ -375,22 +375,22 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
       <section className="lp-section-pad" style={{ textAlign: 'center', maxWidth: 860, margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
         <div style={sectionLabel}>The Problem</div>
         <h2 style={{ fontSize: 'clamp(22px, 4vw, 46px)', fontWeight: 900, marginBottom: 20, lineHeight: 1.15, letterSpacing: '-0.5px' }}>
-          Your child's generation will either build the future — or be replaced by it.
+          Give pupils a chance to create with the technology they use every day.
         </h2>
-        <p style={{ fontSize: 'clamp(14px,2vw,17px)', color: '#64748b', lineHeight: 1.8, marginBottom: 40, maxWidth: 640, margin: '0 auto 40px' }}>
-          The gap between kids who code and kids who don't is widening every year. Right now, most kids are on the wrong side of it.
+        <p style={{ fontSize: 'clamp(14px,2vw,17px)', color: '#94a3b8', lineHeight: 1.8, marginBottom: 40, maxWidth: 640, margin: '0 auto 40px' }}>
+          Many children use digital tools every day without getting to build the games and apps they enjoy. ByteBuddies gives them a guided place to start creating.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 20 }}>
           {[
-            { icon: '📱', color: '#ef4444', title: '7 hours of screen time a day', body: 'The average child spends more time watching strangers play games than learning anything that will matter in 10 years. Passive content is designed to be consumed, not created.' },
-            { icon: '🏫', color: '#f59e0b', title: 'Schools are a decade behind', body: "Most computing classes still teach spreadsheets and PowerPoint. By the time your child graduates, AI will have automated 40% of entry-level jobs. School isn't preparing them for that reality." },
-            { icon: '😟', color: '#8b5cf6', title: 'Parents are left guessing', body: "You know coding matters. You've tried YouTube tutorials and free apps. They lose interest in 20 minutes. You're left wondering: is there something out there that actually works?" },
+            { icon: '📱', color: '#22c55e', title: 'Make screen time creative', body: 'Pupils can move beyond consuming digital content and start making their own games, stories, and apps.' },
+            { icon: '🏫', color: '#f59e0b', title: 'Turn ideas into practice', body: 'Coding concepts make more sense when pupils can try them, see what happens, and improve their projects.' },
+            { icon: '😟', color: '#8b5cf6', title: 'Know what to do next', body: 'Guided lessons and projects give pupils a clear next step, while teachers can follow their classroom progress.' },
           ].map(p => (
             <div key={p.title} style={{ ...card, textAlign: 'left', borderTop: `3px solid ${p.color}20`, background: 'rgba(255,255,255,0.025)' }}>
               <div style={{ fontSize: 32, marginBottom: 14 }}><EmojiIcon e={p.icon} /></div>
               <div style={{ fontWeight: 800, fontSize: 16, marginBottom: 10, color: '#e2e8f0' }}>{p.title}</div>
-              <div style={{ fontSize: 14, color: '#64748b', lineHeight: 1.75 }}>{p.body}</div>
+              <div style={{ fontSize: 14, color: '#94a3b8', lineHeight: 1.75 }}>{p.body}</div>
             </div>
           ))}
         </div>
@@ -403,7 +403,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
           <h2 style={{ fontSize: 'clamp(22px, 4vw, 48px)', fontWeight: 900, marginBottom: 16, letterSpacing: '-0.5px' }}>
             This is not another coding app.<br /><span style={gradText}>This is a launchpad.</span>
           </h2>
-          <p style={{ fontSize: 'clamp(14px,2vw,17px)', color: '#64748b', lineHeight: 1.8, marginBottom: 48, maxWidth: 600, margin: '0 auto 48px' }}>
+          <p style={{ fontSize: 'clamp(14px,2vw,17px)', color: '#94a3b8', lineHeight: 1.8, marginBottom: 48, maxWidth: 600, margin: '0 auto 48px' }}>
             Kids don't learn to code by watching videos or completing checkbox exercises. They learn by building things they actually care about — and sharing them with people they know.
           </p>
 
@@ -417,7 +417,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
               <div key={s.title} style={{ background: 'rgba(255,255,255,0.03)', border: `1px solid ${s.color}25`, borderRadius: 16, padding: '28px 22px', textAlign: 'left' }}>
                 <div style={{ width: 48, height: 48, background: `${s.color}18`, borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, marginBottom: 16 }}><EmojiIcon e={s.icon} /></div>
                 <div style={{ fontWeight: 800, fontSize: 15, marginBottom: 10, color: '#e2e8f0' }}>{s.title}</div>
-                <div style={{ fontSize: 13, color: '#64748b', lineHeight: 1.75 }}>{s.body}</div>
+                <div style={{ fontSize: 13, color: '#94a3b8', lineHeight: 1.75 }}>{s.body}</div>
               </div>
             ))}
           </div>
@@ -431,15 +431,15 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
           <h2 style={{ fontSize: 'clamp(22px, 4vw, 48px)', fontWeight: 900, marginBottom: 16, letterSpacing: '-0.5px' }}>
             What will your child be able to do?
           </h2>
-          <p style={{ fontSize: 'clamp(13px,2vw,16px)', color: '#64748b', marginBottom: 48, lineHeight: 1.7 }}>
-            Not features. Not lessons completed. Actual skills your child will have.
+          <p style={{ fontSize: 'clamp(13px,2vw,16px)', color: '#94a3b8', marginBottom: 48, lineHeight: 1.7 }}>
+            A guided path from a first coding win to bigger, more independent projects.
           </p>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 24 }}>
             {[
-              { period: '7 Days', color: '#6366f1', glow: 'rgba(99,102,241,0.2)', headline: 'First game, first win.', outcomes: ['Build and share their first playable game', 'Understand what code actually does', 'Feel the confidence shift: "I made this"', 'Parents notice the change in energy'] },
-              { period: '30 Days', color: '#ec4899', glow: 'rgba(236,72,153,0.2)', headline: 'Real skills, visible progress.', outcomes: ['Build interactive apps with real logic', 'Write their first lines of Python', 'Share a project portfolio with family', 'Understand variables, loops, and conditions'] },
-              { period: '90 Days', color: '#10b981', glow: 'rgba(16,185,129,0.2)', headline: 'They are now a creator.', outcomes: ['Publish a portfolio of games and apps', 'Compete in coding challenges and win badges', 'Explore AI, cybersecurity, and game design', 'Ahead of 95% of their classmates'] },
+              { period: 'First sessions', color: '#6366f1', glow: 'rgba(99,102,241,0.2)', headline: 'Start by making something.', outcomes: ['Try a guided coding activity', 'See how blocks control a project', 'Make a simple game or animation', 'Share a first creation'] },
+              { period: 'With practice', color: '#ec4899', glow: 'rgba(236,72,153,0.2)', headline: 'Build skills project by project.', outcomes: ['Make interactive apps and games', 'Explore Python alongside visual code', 'Save work in a growing portfolio', 'Practice variables, loops, and conditions'] },
+              { period: 'Keep exploring', color: '#10b981', glow: 'rgba(16,185,129,0.2)', headline: 'Choose what to create next.', outcomes: ['Grow a portfolio of projects', 'Try coding challenges and badges', 'Explore AI, cybersecurity, and game design', 'Apply coding ideas to new projects'] },
             ].map(t => (
               <div key={t.period} style={{ background: `radial-gradient(ellipse at top, ${t.glow}, transparent 70%), rgba(255,255,255,0.03)`, border: `1px solid ${t.color}30`, borderRadius: 20, padding: '32px 24px', textAlign: 'left', position: 'relative' }}>
                 <div style={{ display: 'inline-block', background: t.color, color: '#fff', borderRadius: 8, padding: '4px 14px', fontSize: 12, fontWeight: 800, letterSpacing: 1, marginBottom: 16, textTransform: 'uppercase' }}>{t.period}</div>
@@ -465,8 +465,8 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
             <h2 style={{ fontSize: 'clamp(22px, 4vw, 44px)', fontWeight: 900, marginBottom: 18, letterSpacing: '-0.5px', lineHeight: 1.15 }}>
               Built to keep kids coming back — for the right reasons.
             </h2>
-            <p style={{ fontSize: 15, color: '#64748b', lineHeight: 1.8, marginBottom: 32 }}>
-              We borrowed the best parts of gaming — XP, levels, streaks, and rewards — and put them in service of real learning. Kids don't even realize how much they're absorbing.
+            <p style={{ fontSize: 15, color: '#94a3b8', lineHeight: 1.8, marginBottom: 32 }}>
+              We use XP, levels, streaks, and rewards to make progress visible while pupils learn through building and experimentation.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               {[
@@ -479,7 +479,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
                   <div style={{ width: 40, height: 40, background: 'rgba(99,102,241,0.15)', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, flexShrink: 0 }}><EmojiIcon e={f.icon} /></div>
                   <div>
                     <div style={{ fontWeight: 700, fontSize: 14, color: '#e2e8f0', marginBottom: 3 }}>{f.title}</div>
-                    <div style={{ fontSize: 13, color: '#475569', lineHeight: 1.6 }}>{f.desc}</div>
+                    <div style={{ fontSize: 13, color: '#94a3b8', lineHeight: 1.6 }}>{f.desc}</div>
                   </div>
                 </div>
               ))}
@@ -497,7 +497,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
               <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: 8, padding: '4px 10px' }}>
                 <span style={{ fontSize: 14 }}><EmojiIcon e="🔥" /></span>
                 <span style={{ fontWeight: 800, fontSize: 14, color: '#ef4444' }}>14</span>
-                <span style={{ fontSize: 11, color: '#64748b' }}>day streak</span>
+                <span style={{ fontSize: 11, color: '#94a3b8' }}>day streak</span>
               </div>
             </div>
             <div style={{ padding: '20px' }}>
@@ -520,13 +520,13 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
                 ].map(s => (
                   <div key={s.label} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 10, padding: '12px 14px' }}>
                     <div style={{ fontWeight: 800, fontSize: 18, color: s.color }}>{s.value}</div>
-                    <div style={{ fontSize: 11, color: '#475569', marginTop: 2 }}>{s.label}</div>
+                    <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 2 }}>{s.label}</div>
                   </div>
                 ))}
               </div>
 
               <div style={{ marginBottom: 16 }}>
-                <div style={{ fontSize: 11, color: '#475569', fontWeight: 600, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 10 }}>Recent Badges</div>
+                <div style={{ fontSize: 11, color: '#94a3b8', fontWeight: 600, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 10 }}>Recent Badges</div>
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                   {[
                     { label: 'Python Pro', color: '#3b82f6' },
@@ -556,7 +556,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
             <h2 style={{ fontSize: 'clamp(22px, 4vw, 44px)', fontWeight: 900, letterSpacing: '-0.5px', marginBottom: 12 }}>
               Not basic 3D. Real games, coded by pupils.
             </h2>
-            <p style={{ fontSize: 'clamp(13px,2vw,16px)', color: '#64748b', maxWidth: 620, margin: '0 auto', lineHeight: 1.75 }}>
+            <p style={{ fontSize: 'clamp(13px,2vw,16px)', color: '#94a3b8', maxWidth: 620, margin: '0 auto', lineHeight: 1.75 }}>
               Most 3D coding sites give you one robot in an empty room. In ByteBuddies the world is the game, and code is how pupils play it.
             </p>
           </div>
@@ -572,7 +572,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
               <div key={f.title} style={{ ...card, textAlign: 'left', background: 'rgba(255,255,255,0.025)', borderTop: `3px solid ${f.color}` }}>
                 <div style={{ fontSize: 30, marginBottom: 12 }}><EmojiIcon e={f.icon} /></div>
                 <div style={{ fontWeight: 800, fontSize: 16, marginBottom: 8, color: '#e2e8f0' }}>{f.title}</div>
-                <div style={{ fontSize: 14, color: '#64748b', lineHeight: 1.7 }}>{f.body}</div>
+                <div style={{ fontSize: 14, color: '#94a3b8', lineHeight: 1.7 }}>{f.body}</div>
               </div>
             ))}
           </div>
@@ -587,7 +587,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
             <h2 style={{ fontSize: 'clamp(22px, 4vw, 44px)', fontWeight: 900, letterSpacing: '-0.5px', marginBottom: 16 }}>
               Not just another coding site.
             </h2>
-            <p style={{ fontSize: 'clamp(13px,2vw,16px)', color: '#64748b', maxWidth: 560, margin: '0 auto', lineHeight: 1.75 }}>
+            <p style={{ fontSize: 'clamp(13px,2vw,16px)', color: '#94a3b8', maxWidth: 560, margin: '0 auto', lineHeight: 1.75 }}>
               There are hundreds of coding platforms. Most teach the basics and stop there. ByteBuddies is built for where the world is going, not where it's been.
             </p>
           </div>
@@ -601,7 +601,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
                 <div style={{ fontWeight: 800, fontSize: 16, marginBottom: 20, color: col.bad ? '#ef4444' : '#818cf8' }}>{col.title}</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                   {col.items.map(item => (
-                    <div key={item} style={{ display: 'flex', gap: 10, fontSize: 14, color: col.bad ? '#475569' : '#94a3b8', lineHeight: 1.5 }}>
+                    <div key={item} style={{ display: 'flex', gap: 10, fontSize: 14, color: col.bad ? '#94a3b8' : '#94a3b8', lineHeight: 1.5 }}>
                       <span style={{ color: col.bad ? '#ef4444' : '#22c55e', flexShrink: 0, fontWeight: 700 }}>{col.bad ? '✕' : '✓'}</span>{item}
                     </div>
                   ))}
@@ -618,7 +618,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
         <h2 style={{ fontSize: 'clamp(20px, 4vw, 42px)', fontWeight: 900, marginBottom: 16, lineHeight: 1.15 }}>
           Mapped to what schools actually require
         </h2>
-        <p style={{ color: '#64748b', fontSize: 15, lineHeight: 1.8, marginBottom: 40, maxWidth: 640 }}>
+        <p style={{ color: '#94a3b8', fontSize: 15, lineHeight: 1.8, marginBottom: 40, maxWidth: 640 }}>
           ByteBuddies is fully mapped to the UK National Curriculum for Computing (KS2 & KS3), CSTA K-12 Computer Science Standards, and the Cambridge Digital Literacy framework.
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16, marginBottom: 32 }}>
@@ -634,7 +634,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
               <div style={{ fontSize: 11, color: s.color, fontWeight: 600, marginBottom: 12, textTransform: 'uppercase', letterSpacing: 0.5 }}>{s.sub}</div>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {s.points.map(p => (
-                  <li key={p} style={{ fontSize: 12, color: '#64748b', padding: '3px 0', display: 'flex', gap: 6 }}>
+                  <li key={p} style={{ fontSize: 12, color: '#94a3b8', padding: '3px 0', display: 'flex', gap: 6 }}>
                     <span style={{ color: s.color, flexShrink: 0 }}>›</span>{p}
                   </li>
                 ))}
@@ -645,7 +645,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
         <div style={{ background: 'rgba(99,102,241,0.07)', border: '1px solid rgba(99,102,241,0.18)', borderRadius: 12, padding: '20px 24px', display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
           <div style={{ flex: 1, minWidth: 200 }}>
             <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 6 }}>Download our full Curriculum Map</div>
-            <div style={{ fontSize: 13, color: '#64748b' }}>A detailed PDF showing exactly how each lesson maps to curriculum standards.</div>
+            <div style={{ fontSize: 13, color: '#94a3b8' }}>A detailed PDF showing exactly how each lesson maps to curriculum standards.</div>
           </div>
           <button onClick={() => { window.location.hash = 'whitepaper'; }} style={{ padding: '12px 24px', background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', border: 'none', borderRadius: 8, color: '#fff', cursor: 'pointer', fontSize: 14, fontWeight: 700, whiteSpace: 'nowrap' }}>
             View Curriculum Map →
@@ -670,7 +670,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
               <div key={f.step} style={{ textAlign: 'center' }}>
                 <div style={{ width: 56, height: 56, background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: 18, margin: '0 auto 18px', boxShadow: '0 4px 20px rgba(99,102,241,0.35)' }}>{f.step}</div>
                 <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 10 }}>{f.title}</div>
-                <div style={{ fontSize: 13, color: '#475569', lineHeight: 1.7 }}>{f.desc}</div>
+                <div style={{ fontSize: 13, color: '#94a3b8', lineHeight: 1.7 }}>{f.desc}</div>
               </div>
             ))}
           </div>
@@ -685,7 +685,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
             <h2 style={{ fontSize: 'clamp(20px, 4vw, 40px)', fontWeight: 900, marginBottom: 16, lineHeight: 1.2 }}>
               Free one-term school pilot — no hoops, no cost.
             </h2>
-            <p style={{ color: '#64748b', fontSize: 15, lineHeight: 1.8, marginBottom: 24 }}>
+            <p style={{ color: '#94a3b8', fontSize: 15, lineHeight: 1.8, marginBottom: 24 }}>
               We set up your classes, train your teachers, and give you a live walkthrough. You see exactly how ByteBuddies fits your curriculum before committing to anything.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 28 }}>
@@ -699,7 +699,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
           </div>
           <div style={{ flex: 1, minWidth: 260, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 20, padding: 28 }}>
             <div style={{ fontWeight: 800, fontSize: 18, marginBottom: 4 }}>Book a demo or request a quote</div>
-            <div style={{ fontSize: 13, color: '#475569', marginBottom: 20 }}>Usually responds within 1 school day</div>
+            <div style={{ fontSize: 13, color: '#94a3b8', marginBottom: 20 }}>Usually responds within 1 school day</div>
             <select value={enquiry.type} onChange={setField('type')} aria-label="What would you like?" style={{ ...fieldStyle, appearance: 'auto', background: '#121a33' }}>
               {['Book a demo', 'Request a quote', 'Free school pilot', 'School group / multiple schools', 'Something else'].map(o => <option key={o}>{o}</option>)}
             </select>
@@ -716,7 +716,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
                 ✓ Your email app should now open with your enquiry ready to send. If it doesn't, email us at <a href={`mailto:${CONTACT_EMAIL}`} style={{ color: '#a5b4fc' }}>{CONTACT_EMAIL}</a>.
               </div>
             ) : (
-              <div style={{ marginTop: 14, fontSize: 12, color: '#475569', textAlign: 'center' }}>
+              <div style={{ marginTop: 14, fontSize: 12, color: '#94a3b8', textAlign: 'center' }}>
                 Or email us directly: <a href={`mailto:${CONTACT_EMAIL}`} style={{ color: '#a5b4fc' }}>{CONTACT_EMAIL}</a>
               </div>
             )}
@@ -729,7 +729,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
         <div style={{ maxWidth: 980, margin: '0 auto', textAlign: 'center' }}>
           <div style={sectionLabel}>Pricing</div>
           <h2 style={{ fontSize: 'clamp(22px, 4vw, 44px)', fontWeight: 900, marginBottom: 12, letterSpacing: '-0.5px' }}>Priced for your school</h2>
-          <p style={{ color: '#64748b', fontSize: 16, marginBottom: 44, lineHeight: 1.7, maxWidth: 620, marginLeft: 'auto', marginRight: 'auto' }}>
+          <p style={{ color: '#94a3b8', fontSize: 16, marginBottom: 44, lineHeight: 1.7, maxWidth: 620, marginLeft: 'auto', marginRight: 'auto' }}>
             Every school is different, so we quote by school size and the year groups you teach. Get in touch and we'll send a tailored quote, usually within one school day.
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 20 }}>
@@ -751,7 +751,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
                 {p.highlight && <div style={{ position: 'absolute', top: -13, left: '50%', transform: 'translateX(-50%)', background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', borderRadius: 100, padding: '5px 16px', fontSize: 11, fontWeight: 800, whiteSpace: 'nowrap', letterSpacing: 0.5 }}>MOST POPULAR</div>}
                 <div style={{ fontSize: 13, fontWeight: 800, color: p.color, marginBottom: 10, letterSpacing: 0.5 }}>{p.name.toUpperCase()}</div>
                 <div style={{ fontSize: 'clamp(22px,4vw,28px)', fontWeight: 900, marginBottom: 4 }}>{p.name === 'Free Pilot' ? 'Free' : 'Contact us'}</div>
-                <div style={{ fontSize: 12, color: '#475569', marginBottom: 22 }}>{p.tag}</div>
+                <div style={{ fontSize: 12, color: '#94a3b8', marginBottom: 22 }}>{p.tag}</div>
                 <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px', textAlign: 'left', flex: 1 }}>
                   {p.features.map(f => <li key={f} style={{ fontSize: 13, color: '#94a3b8', padding: '6px 0', display: 'flex', gap: 9 }}><span style={{ color: '#22c55e', flexShrink: 0 }}>✓</span>{f}</li>)}
                 </ul>
@@ -761,7 +761,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
               </div>
             ))}
           </div>
-          <p style={{ marginTop: 28, fontSize: 13, color: '#64748b' }}>
+          <p style={{ marginTop: 28, fontSize: 13, color: '#94a3b8' }}>
             Prefer email? <a href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('ByteBuddies quote request')}`} style={{ color: '#a5b4fc' }}>{CONTACT_EMAIL}</a>
           </p>
         </div>
@@ -774,7 +774,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
         <h2 style={{ fontSize: 'clamp(26px, 5vw, 56px)', fontWeight: 900, marginBottom: 16, letterSpacing: '-1px', lineHeight: 1.1 }}>
           Try ByteBuddies with your pupils<br /><span style={gradText}>free for a whole term.</span>
         </h2>
-        <p style={{ color: '#64748b', fontSize: 'clamp(14px,2.5vw,17px)', marginBottom: 16, lineHeight: 1.7, maxWidth: 520, margin: '0 auto 16px' }}>
+        <p style={{ color: '#94a3b8', fontSize: 'clamp(14px,2.5vw,17px)', marginBottom: 16, lineHeight: 1.7, maxWidth: 520, margin: '0 auto 16px' }}>
           We set up a class, train the teacher and send you a progress report at the end. No cost, no commitment.
         </p>
         <p style={{ color: '#f59e0b', fontWeight: 700, fontSize: 14, marginBottom: 36, letterSpacing: 0.3 }}>
@@ -785,7 +785,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
         </button>
         <div style={{ display: 'flex', gap: 'clamp(12px,3vw,28px)', flexWrap: 'wrap', justifyContent: 'center' }}>
           {['One class, one term, free', 'Teacher training included', 'Google Classroom ready'].map(t => (
-            <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 13, color: '#475569' }}>
+            <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 13, color: '#94a3b8' }}>
               <span style={{ color: '#22c55e', fontSize: 15 }}>✓</span>{t}
             </div>
           ))}
@@ -796,7 +796,7 @@ export default function LandingPage({ onLogin, onTeacherLogin, onSignup, onDevGu
       <div className="lp-footer">
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{ width: 28, height: 28, background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: 13 }}>B</div>
-          <span style={{ fontWeight: 700, fontSize: 15, color: '#475569' }}>ByteBuddies</span>
+          <span style={{ fontWeight: 700, fontSize: 15, color: '#94a3b8' }}>ByteBuddies</span>
         </div>
         <div style={{ fontSize: 13, color: '#334155' }}>© 2026 ByteBuddies · Built for the next generation of creators</div>
         <div style={{ display: 'flex', gap: 24, fontSize: 13, color: '#334155' }}>
