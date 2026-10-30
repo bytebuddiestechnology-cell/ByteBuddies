@@ -62,7 +62,6 @@ export default function TopBar({ currentPage, onNavigate, onExport, onAuth }) {
     if (window.innerWidth <= 768) return 'mobile';
     return window.innerWidth <= 1340 ? 'compact' : 'full';
   });
-  const [readNotifs, setReadNotifs] = useState(new Set());
   const avatarRef = useRef(null);
   const bellRef = useRef(null);
   const menuRef = useRef(null);
@@ -76,13 +75,6 @@ export default function TopBar({ currentPage, onNavigate, onExport, onAuth }) {
     return () => window.removeEventListener('resize', updateNavMode);
   }, []);
 
-  const notifications = [
-    { id: 1, text: 'ByteNinja liked your Space Defender!', time: '2m ago', icon: '❤️' },
-    { id: 2, text: 'You earned 150 XP from Daily Challenge!', time: '1h ago', icon: '⚡' },
-    { id: 3, text: 'New challenge available: CSS Art', time: '3h ago', icon: '🎯' },
-    { id: 4, text: 'PixelKing remixed your project', time: '5h ago', icon: '🔄' },
-  ];
-  const unreadCount = notifications.filter(n => !readNotifs.has(n.id)).length;
 
   const pages = [
     { id: 'dashboard', label: 'Dashboard', icon: '📊' },
@@ -189,35 +181,16 @@ export default function TopBar({ currentPage, onNavigate, onExport, onAuth }) {
           style={{ position: 'relative' }}
         >
           <Icon name="bell" size="1.25em" />
-          {unreadCount > 0 && (
-            <span style={{
-              position: 'absolute', top: 2, right: 2,
-              background: '#ef4444', color: 'white',
-              fontSize: 9, fontWeight: 800,
-              width: 15, height: 15, borderRadius: '50%',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              lineHeight: 1, pointerEvents: 'none',
-            }}>{unreadCount}</span>
-          )}
         </button>
 
         {showNotifs && (
           <PortalDropdown anchorRef={bellRef} onClose={() => setShowNotifs(false)} width={300}>
-            <div style={{ padding: '10px 16px', borderBottom: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ padding: '12px 16px', borderBottom: '1px solid var(--border-color)' }}>
               <span style={{ fontWeight: 700, fontSize: 14 }}>Notifications</span>
-              <button className="btn btn-ghost btn-sm" style={{ fontSize: 11 }} onClick={() => setReadNotifs(new Set(notifications.map(n => n.id)))}>Mark all read</button>
             </div>
-            {notifications.map(n => (
-              <button key={n.id} className="dropdown-item" style={{ display: 'flex', gap: 10, alignItems: 'flex-start', padding: '10px 16px' }}
-                onClick={() => setReadNotifs(prev => new Set([...prev, n.id]))}>
-                <EmojiIcon e={n.icon} size="1.1em" style={{ flexShrink: 0, marginTop: 1, color: 'var(--accent, #6366f1)' }} />
-                <div style={{ flex: 1, textAlign: 'left' }}>
-                  <div style={{ fontSize: 12, lineHeight: 1.4, color: readNotifs.has(n.id) ? 'var(--text-muted)' : 'var(--text-primary)', fontWeight: readNotifs.has(n.id) ? 400 : 600 }}>{n.text}</div>
-                  <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 2 }}>{n.time}</div>
-                </div>
-                {!readNotifs.has(n.id) && <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#6366f1', flexShrink: 0, marginTop: 4 }} />}
-              </button>
-            ))}
+            <div role="status" style={{ padding: '22px 16px', textAlign: 'center', color: 'var(--text-muted)', fontSize: 13 }}>
+              You’re all caught up.
+            </div>
           </PortalDropdown>
         )}
 
