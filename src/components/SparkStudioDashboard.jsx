@@ -91,6 +91,9 @@ export default function SparkStudioDashboard({ onNavigate }) {
   const lessonsDone = progress.lessonsDone.length;
   const missionsDone = progress.missionsDone.length;
   const isFirstVisit = lessonsDone === 0 && missionsDone === 0 && xp === 0;
+  const startYear = /^y[3-6]$/.test(cls?.year || '') ? cls.year : 'y3';
+  const startYearNumber = startYear.slice(1);
+  const startLessonRoute = `learn/${startYear}/w01`;
   const missionsTotal = CAMPAIGNS.reduce((n, c) => n + c.missions, 0);
   const spark = SPARKS[Math.floor(Date.now() / 86400000) % SPARKS.length];
 
@@ -105,7 +108,7 @@ export default function SparkStudioDashboard({ onNavigate }) {
     ? { label: `Do: ${classWork[0].a.title}`, go: () => { window.location.hash = classroomHash(classWork[0].a, cls); } }
     : lessonsDone > 0
       ? { label: 'Continue learning', go: () => onNavigate('learn') }
-      : { label: 'Start Year 3, Week 1', go: () => onNavigate('learn/y3/w01') };
+      : { label: `Start Year ${startYearNumber}, Week 1`, go: () => onNavigate(startLessonRoute) };
 
   const notify = (message) => { setToast(message); window.setTimeout(() => setToast(''), 2400); };
 
@@ -117,9 +120,9 @@ export default function SparkStudioDashboard({ onNavigate }) {
 
   const suggestions = [
     {
-      icon: '📚', title: lessonsDone ? 'Pick up your lessons' : 'Start Year 3, Week 1',
+      icon: '📚', title: lessonsDone ? 'Pick up your lessons' : `Start Year ${startYearNumber}, Week 1`,
       sub: lessonsDone ? `${lessonsDone} of ${TOTAL_LESSONS} lessons done` : 'Meet Dot the robot and learn the class rules',
-      go: () => onNavigate(lessonsDone ? 'learn' : 'learn/y3/w01'), color: '#6366f1',
+      go: () => onNavigate(lessonsDone ? 'learn' : startLessonRoute), color: '#6366f1',
     },
     {
       icon: activeCampaign.emoji, title: `${activeCampaign.title} mission`,
@@ -154,7 +157,7 @@ export default function SparkStudioDashboard({ onNavigate }) {
         </div>
         <div className="spark-hero-scene">
           <div className="spark-focus-copy">
-            <div className="spark-focus-label"><EmojiIcon e="🚀" style={{ marginRight: '0.35em' }} />YOUR NEXT MISSION</div>
+            <div className="spark-focus-label"><EmojiIcon e="🚀" style={{ marginRight: '0.35em' }} />YOUR NEXT STEP</div>
             <h2>{classWork[0]?.a.title || (lessonsDone ? 'Continue your learning' : 'Start with a guided lesson')}</h2>
             <p>{classWork[0] ? `${(KIND_META[classWork[0].a.kind] || KIND_META.task).label} · ${dueLabel(classWork[0].a.dueDate)}` : lessonsDone ? `${lessonsDone} lesson${lessonsDone === 1 ? '' : 's'} completed so far` : 'Learn the basics, then apply them in your own projects.'}</p>
           </div>
@@ -174,7 +177,7 @@ export default function SparkStudioDashboard({ onNavigate }) {
             </div>
           </div>
           <div className="spark-adventure-grid">
-            <button className="spark-adventure-card adventure-learn" onClick={() => onNavigate('learn/y3/w01')}>
+            <button className="spark-adventure-card adventure-learn" onClick={() => onNavigate(startLessonRoute)}>
               <span aria-hidden="true"><EmojiIcon e="📚" /></span><strong>Learn to code</strong><small>Try your first guided lesson</small><b aria-hidden="true">→</b>
             </button>
             <button className="spark-adventure-card adventure-game" onClick={() => onNavigate('gamebuilder')}>
